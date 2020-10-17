@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<h1>15 задача. Палиндром ли строка?</h1>
+	
+	<script>
+		/*function palindrom(str){
+			if(str === str){
+				return true;
+			}else{
+				return false;
+			}
+		}
+		palindrom('racecar');
+		palindrom('table');*/
+
+		
+
+		function palindrom(strProverka){
+
+		let str = strProverka;
+		let str1 = '';
+		let str2 = '';
+		for (i=0; i< str.length ;i++){
+			str1 += str.charAt(i);			
+		}
+		console.log(str);
+		for (let i=str.length; i>=0; i--){
+			str2 += str.charAt(i);			
+		}
+		console.log(str2);
+
+
+			if (str1===str2){
+				console.log(true);
+			}else{
+				console.log(false);
+			}
+		}
+		palindrom('dad');
+		palindrom('hello');
+	</script>
+</body>
+</html>
