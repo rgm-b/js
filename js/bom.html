@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+<body>
+
+	<h1>Объект Location</h1>
+	<button onclick="fooReload()">RELOAD</button>
+	<button onclick="fooAssign()">ASSIGN</button>
+	<button onclick="fooReplace()">REPLACE</button>
+
+
+	<script>
+		'use strict';
+		
+		function fooReload(){
+			location.reload();
+		}
+		function fooAssign(){
+			location.assign('https://ya.ru');
+		}
+		function fooReplace(){
+			location.replace('https://ya.ru');
+		}
+
+		document.write('<h2> заголовок H2 через JS</h2>');
+		document.write('<p>первый абзац</p>' , '<p>второй абзац</p>');
+	</script>
+</body>
+</html>
