@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<h1>Самовызывающаяся функция</h1>
+
+	<script>
+		function foo(){
+			var a = [];
+
+			for(var i=0; i<3; i++)
+				(function (j) {
+					a.push(  function(){console.log(j)}  );
+				})(i)
+				
+
+			return a;			
+		}
+
+		var x = foo();
+
+		x[0]();
+		x[1]();
+		x[2]();
+
+	</script>
+</body>
+</html>

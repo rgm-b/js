@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+
+	<h1>Урок 9</h1>
+
+	<script>
+		var aIdx = 97;
+		var alphabet ="";
+		for( var i = 0 ; i<26 ; i++){
+			alphabet += String.fromCharCode(aIdx + i);
+		}
+		console.log(alphabet);
+
+
+		var digits ="";
+		for( var i = 0 ; i<10 ; i++ ){
+			digits += i;
+		}
+		console.log(digits);
+
+
+		function buildString( n , callback ){   //n сколько цикл крутить, callback - функцию обратного вызова, которая всё это будет отрабатывать
+			var result;
+			for(var i=0; i<n; i++){
+				result += callback(i);
+			}
+			return result;
+		}
+
+		var alphabet2 = buildString( 26 , function(i){
+			var aIdx = 97;
+			return String.fromCharCode(aIdx + i);
+		} );
+		console.log(alphabet2);
+
+		var digits2 = buildString( 10 , function(i){
+			return i;
+		} );
+		console.log(digits2);
+
+	</script>
+	
+</body>
+</html>

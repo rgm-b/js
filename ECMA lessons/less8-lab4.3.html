@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+<body>
+	<h1>less 8 lab 4.3  time 28:56</h1>
+	<script>
+		var a = [5,12];
+		var b = [];
+		var c = [];
+		a[99] = 7;
+
+		for (let i in a){
+			b.push( Math.pow (a[i], 2) );
+		}
+		console.log(b);
+
+		for (let i = 0; i<a.length ; i++){
+			if(a[i]){
+				c.push( a[i]**2 );
+			}
+			
+		}
+		console.log(c);
+
+
+
+	</script>
+</body>
+</html>

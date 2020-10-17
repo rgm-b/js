@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<h1>Лаба 5.1 из Урока 9</h1>
+
+	<p>Никто не в состоянии описать эту картину</p>
+
+	<button onclick="find('тоя')">Найти слово по куску 'тоя'</button>
+
+	<button onclick="find('egergerg')">Найти слово по куску 'egergerg'</button>
+
+	<button onclick="find('')">Найти слово по куску '' (пустая строка)</button>
+
+	<script>
+		let str = "Никто не в состоянии описать эту картину";
+
+		console.log(str);
+
+		function find(bit){
+
+			let indexCentrWord = str.indexOf(bit);
+	
+			if(bit && indexCentrWord != -1){				
+			
+				let indexStartWord = str.lastIndexOf(' ', indexCentrWord) + 1 ;
+
+				let indexEndWord = str.indexOf(' ', indexCentrWord);
+
+				let word = str.slice(indexStartWord, indexEndWord);
+
+				console.log(word);
+
+			}else if(indexCentrWord == -1){
+				console.log('такого не найдено')
+			}else{
+				console.log('введите буквы')
+			}
+
+		}
+		
+	</script>
+</body>
+</html>

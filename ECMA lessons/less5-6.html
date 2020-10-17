@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<h1>Урок 5-6. Функции</h1>
+
+<script>	
+	function sayHello(name){
+		name = name || "Гость"; // в случае с Васей и Джоном name = true, поэтому позвращает Васю и Джона. в третьем случае name=undefined => false и ИЛИ идёт в правую часть и возвращает Гость
+		console.log("Привет, " + name+"!");
+	}
+
+	sayHello("Вася");
+	let n = "Джон"
+	sayHello(n);
+	sayHello(); // третий случай
+
+
+	// var num;
+	function plus(num){
+		if (num<0) {
+			return -num;
+		}else{
+			return num
+		}
+	}
+	console.log( plus(10) );
+	console.log( plus(-100) );
+
+
+	//лабораторная 3.1  (33:51)
+
+	function abc(num , exp) {
+		let result = 1;
+		for (i=0 ; i<exp ;i++){
+			result *= num;
+		}
+		return result;
+	}
+
+	console.log ( abc(2,10) );
+	console.log ( abc(3,4) );
+
+
+	//рекурсия
+	console.log("Рекурсия");
+	
+	
+	function power(num, exp){
+		if(exp===0) return 1;
+		return num * power(num, exp-1);   //(50:01)  разматывается как пружина пока exp не будет равно 0, потом функция power возвращает 1 и начинает схловываться
+	}
+	console.log ( power (2, 4) );
+
+
+</script>
+</body>
+</html>

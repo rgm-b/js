@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Урок 7</title>
+</head>
+<body>
+ <h1>урок 7. объекты</h1>
+
+	<script>
+		var user = {
+			name: "Vasya",
+			age: 55,
+			"qwe rty": "gewgwe wegtew",
+			admin: true,
+			123: 567,
+			say: function(word){
+				 	console.log(word);
+				 },
+			hello: function(word){
+						// console.log(word + " from " + user.name);
+						console.log(word + " from " + this.name); //this ссылвается на ИМЯ объекта в котором находится (в данном случае user)
+				   }
+		}
+
+		for (let i in user){
+			console.log(i + ": " + user[i])
+		}
+
+		user.say("HELLO!!!");
+		user["say"]("HELLO world!!!");
+
+		user.hello("Hello");
+
+		//передача метода в другой объект
+
+		var john = {
+			name: "John",
+			say: function(word){
+				console.log(word + " " + this.name);
+			}
+		}
+		john.say("Hello");
+
+		var mike = {
+			name: "Mike",
+		}
+
+		mike.x = john.say;
+
+		mike.x("Privet")
+
+
+		//вызываем функцию с this из глобальной области видимости
+
+		function foo(){
+			console.log(this.age);
+		}
+
+		foo();  //undefined
+
+		var age = 10;
+
+		foo();  //10
+
+
+		//переменная self как ссылка на this
+		console.log("переменная self как ссылка на this");
+
+		let obj = {
+			param: 10,
+			method: function(){
+				let self = this;
+				function test(){
+					console.log(self.param);
+				}
+				test();  //вызывает эту функцию ГЛОБАЛЬНЫЙ ОБЪЕКТ
+			}
+		}
+		obj.method();
+
+
+		// метод call с входящими параметрами (выполни функцию в контексте объекта)
+		console.log("метод call с входящими параметрами");
+
+		function some (abc, befg){
+			console.log(abc + befg + this.name);
+		}
+		let lesha = {
+			name: "Лёша"
+		};
+
+		some.call(lesha, "Меня ", "зовут "); //"Меня " попадает в abc , "зовут" подапает в befg
+
+	</script>
+</body>
+</html>

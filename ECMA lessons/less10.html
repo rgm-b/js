@@ -1,0 +1,34 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+<body>
+	<h1>Урок 10. Регулярные выражения!</h1>
+	
+	<script>
+		let s = "Smith, John\nDow, Mike\nLee, Steeve";
+
+		console.log(s);
+
+		// let w = s.replace(/([a-z]+), ([a-z]+)/i, "$2 $1"); //без флага g только первое вхождение сработает
+
+		let w = s.replace(/([a-z]+), ([a-z]+)/ig, "$2 $1"); 
+
+		let q = s.match(/([a-z]+), ([a-z]+)/ig, "$2 $1");
+
+		console.log(s);
+
+		console.log(w);
+
+		console.log(q);
+
+		let test = "vasya@mail.ru".match(/([a-z]+)@([a-z]+)\.([a-z]{2,})/i);
+		console.log(test);
+
+
+	</script>
+</body>
+</html>

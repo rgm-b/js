@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+<body>
+
+	<h1>Урок 11. Функция конструктор.</h1>
+	
+	<script>
+		function User(name, age){
+			this.name = name;
+			this.age = age;
+			this.admin = false;
+		}
+
+		var u1 = new User("John", 25);
+
+		User.prototype.x = 10;
+
+		User.prototype.say = function(w){
+			console.log(this.name,':',w);
+			return w;
+		};
+
+
+
+
+		//сделаем числу метод pow()
+		Number.prototype.pow = function(x){
+			return Math.pow(this.valueOf(), x);
+		}
+		let n = 2;
+		console.log( n.pow(3) );  //получаем на выходе 2 в 3й степени
+
+
+		Number.prototype.minus = function(num){			
+			return this.valueOf() - num
+		}
+		Number.prototype.plus = function(num){
+			return this.valueOf() + num
+		}
+		console.log("\nПлюс и минус");
+		console.log((5).plus(5).minus(4));
+		
+
+
+
+		//кто-то где-то сверху испортил Object
+		Object.prototype.zzzzz=7777777777;
+
+
+		//выводим свойста объекта u1
+		console.log('\nвыводим свойста объекта u1');
+		for (let i in u1){
+			console.log(i,':',u1[i]);
+			console.log(i);
+		}
+
+		console.log('\nвыводим свойста объекта u1');
+		for (var j in u1){
+			if(u1.hasOwnProperty(j)){
+				console.log(j,':',u1[j]);
+				console.log(j);
+			}		
+		}
+
+
+
+
+
+	</script>
+</body>
+</html>
