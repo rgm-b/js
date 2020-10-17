@@ -20,19 +20,19 @@
 
 		
 
-		function palindrom(strProverka){
+		/*function palindrom(strProverka){
 
-		let str = strProverka;
-		let str1 = '';
-		let str2 = '';
-		for (i=0; i< str.length ;i++){
-			str1 += str.charAt(i);			
-		}
-		console.log(str);
-		for (let i=str.length; i>=0; i--){
-			str2 += str.charAt(i);			
-		}
-		console.log(str2);
+			let str = strProverka;
+			let str1 = '';
+			let str2 = '';
+			for (i=0; i< str.length ;i++){
+				str1 += str.charAt(i);			
+			}
+			console.log(str);
+			for (let i=str.length; i>=0; i--){
+				str2 += str.charAt(i);			
+			}
+			console.log(str2);
 
 
 			if (str1===str2){
@@ -42,7 +42,38 @@
 			}
 		}
 		palindrom('dad');
+		palindrom('hello');*/
+
+
+		function palindrom(string){
+				let str = string || 0 ;
+                if (str) {
+                	str = str.toLowerCase();
+                }
+				let strReverse = '';
+				let result = false; 
+				
+				for (let i=str.length; i>=0; i--){
+					strReverse += str.charAt(i);			
+				}
+				
+				if (str.length<2){				
+					result = 'Ошибка, введите больше букв';
+				}else if(typeof str !== "string"){
+					result = 'Ошибка, введите строку';
+				}else if(/\d/.test(str)){					
+					result = "Ошибка, введите буквы, а не цифры"
+				}else if(str===strReverse){
+
+					result = true;
+				}
+				return result;
+					
+			
+		}
+		palindrom('dad');
 		palindrom('hello');
+		palindrom('hello world');
 	</script>
 </body>
 </html>
