@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<style>
+		ul li{
+			columns: green;
+		}
+		.test1{
+			font-size: 18px;
+			color: #29acea;
+			border-bottom: 1px solid #eee;
+		}
+	</style>
+</head>
+<body>
+	<h1>jQuery урок 1</h1>
+
+	<div>
+		<ul>
+			<li class="test1">Lorem, ipsum.</li>
+			<li>Nemo, velit!</li>
+			<li class="test1">Ullam, quas.</li>
+			<li>Dolor, deserunt!</li>
+			<li class="test1">Deserunt, adipisci.</li>
+			<li>Officiis, deserunt!</li>
+			<li class="test1">Molestias, sunt?</li>
+			<li>Illo, reprehenderit.</li>
+			<li class="test1">Unde, voluptatibus.</li>
+			<li>Aperiam, placeat?</li>
+		</ul>
+	</div>
+
+	<button>кнопка</button>
+
+	<script src="jquery-3.5.1.js"></script>
+
+	<script>
+
+		/*$('li').css("color", "green");
+
+		$('.test1').css({'font-size': "18px", 
+							'color': '#29acea',
+							'border-bottom': '1px solid #eee'
+		})*/
+
+		$( "button" ).click(function() {
+
+		  $('ul li').toggleClass('test1');
+		  
+		});
+
+		
+		
+	</script>
+	
+</body>
+</html>
