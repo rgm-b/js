@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<!-- <script>
+		"use strict"
+		let links = {
+			"Яндекс" : "https://ya.ru",
+			"Бинг" : "https://bing.com",
+			"Гугль" : "https://google.ru"
+		};
+
+		let s;
+
+		window.onload = function(){  // window.onload для того чтобы ф-ия загрузилась в конце загрузки документа
+			//создадим в списке select элементы option
+
+			s = document.myForm.selURL; //добавляем в переменную s <select name="selURL" id="selURL" disabled></select>
+
+			// let o;
+			for (let linkName in links){
+				let o = new Option();
+				o.value = links[linkName];
+				o.text = linkName;
+
+				s.add(o,null);
+			}
+
+
+			//сделаем все элементы формы доступными
+			let f = document.myForm;
+			for(let i = 0; i<f.elements.length ; i++){
+				f.elements[i].disabled = false;
+			}
+
+			f.onsubmit = function(e){
+				e.preventDefault();
+			};
+
+			function goToURL(){
+				let url = s.options[s.selectedIndex].value;
+				console.log(url);
+				location.assign(url);
+			}
+
+
+		}
+
+		
+	</script>	 -->
+</head>
+<body>
+
+	<h1>Использование элементов Select и Option</h1>
+
+	<form name="myForm" action="#" id="myForm">
+		<label for="selURL">Выберете адрес</label>
+		<select name="selURL" id="selURL" disabled></select>
+		<button onclick="goToURL()" disabled>Переход</button>
+	</form>
+	
+
+
+	<script>
+		"use strict"
+		let links = {
+			"Яндекс" : "https://ya.ru",
+			"Бинг" : "https://bing.com",
+			"Гугль" : "https://google.ru"
+		};
+
+		let s;
+
+			s = document.myForm.selURL; //добавляем в переменную s <select name="selURL" id="selURL" disabled></select>
+
+			// let o;
+			for (let linkName in links){
+				let o = new Option();
+				o.value = links[linkName];
+				o.text = linkName;
+
+				s.add(o,null);
+			}
+
+
+			//сделаем все элементы формы доступными
+			let f = document.myForm;
+			for(let i = 0; i<f.elements.length ; i++){
+				f.elements[i].disabled = false;
+			}
+
+			f.onsubmit = function(e){
+				e.preventDefault();
+			};
+
+			function goToURL(){
+				let url = s.options[s.selectedIndex].value;
+				console.log(url);
+				location.assign(url);
+			}
+
+
+		
+
+		
+	</script>	
+</body>
+</html>
