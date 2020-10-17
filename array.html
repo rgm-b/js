@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+<body>
+
+	<h1>14 задача. Сделать из массива ['a','b','c'] массив ['a','a-b','a-b-c']</h1>
+	
+	<script>
+		let arr1 = ['a','b','c','d'];
+		
+		let arr2 = arr1.map(function(znachenie, i) {  /*метод map принимает функцию, которая
+															возвращает для каждого элемента массива arr2*/
+							
+								/*if (i == 0){
+								  return num;
+								}else if(i ==1 ){
+									return ( arr1[i-1]+ '-' + num);
+								}else if(i ==2){
+									return (arr1[i-2] +'-'+ arr1[i-1]+ '-' + num);
+								}*/
+								//return arr1.slice(0, i+1).join('-'); 
+								/*функция возвращает
+																		slice с какого элемента (0 *включительно) по какой (index+1 *не включительно) копируем исходный массив, а join складывает полученные массивы по порядку в каждую ячейку
+																			*/
+
+								return arr1.slice(0, i+1);
+								
+														  	
+							});
+							  
+					
+
+		console.log(arr2);
+	</script>
+</body>
+</html>
