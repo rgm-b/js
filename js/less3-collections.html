@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<style>
+		button{
+			margin-right: 10px;
+		}
+		span{
+			background: #eee;
+			padding: 5px;
+			cursor: pointer;
+		}
+	</style>
+</head>
+<body>
+	<h1>Урок 3</h1>
+	<form action="https://google.ru/search" name='search' target="_blank">
+		<fieldset>
+			<legend>Я ищу</legend>
+			<div class="block">
+				<label for="">
+					<sran>Слово</sran><input type="text" name="q" value="Уарабей">
+				</label>
+			</div>
+		</fieldset>
+		<br>
+		<div class="block">
+			<span onclick="form1()">Кликнуть</span>
+			<span onclick="reset1()">Сбросить</span>
+			<span onclick="focus11()">В фокус</span>
+			<span onclick="submit1()">Отправить</span> <!--  так как button , если находится в form срабатывает незавимимо от того что в функции изменил его на span -->
+			<button type='submit'>Submit</button>
+			<span onclick="clickSubmit()">кликни по сабмиту програмано</span>
+		</div>
+		
+		
+	</form>
+	<!-- 
+	<a href="javascript:form1()">Кликнуть</a>
+	<a href="">Сбросить</a>
+	<a href="">Отправить</a>
+	<a href="">Submit </a>
+	 -->
+	<script>
+		
+
+		let f;
+
+		function form1(){
+			f = document.forms.search;
+		}
+
+		function reset1(){
+			f.reset();
+		}
+
+		function focus11(){
+			// f.elements.q.focus();
+			f.elements[1].focus();
+		}
+
+		function submit1(){
+			f.submit();
+		}
+
+		function clickSubmit(){
+			f[2].click();   //в f[2] находиться <button type='submit'>Submit</button>   метод click() кликает по button програмно
+		}
+
+
+
+
+		//let f = document.forms[0];
+
+		//f.action; //получить значение action
+
+		//f.action = 'https://ya.ru'; // поменять значение action
+
+		//document.links[0].style.color = 'red';
+
+	</script>
+</body>
+</html>

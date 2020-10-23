@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<style>
+		iframe{
+			background: #d0fbf7;
+		}
+	</style>
+</head>
+<body>
+	<h1>Урок 2. Фрейм</h1>
+
+	<div>
+		<p><a href="javascript:f()">Кликни</a></p>	
+		<iframe src="less2-iframe-inner.html" name="content0"></iframe>	
+		<iframe src="less2-iframe-inner.html" name="content1"></iframe>	
+	</div>
+	
+	
+	<script>
+
+		function f(){
+			alert(frames[0].s);
+		}
+
+		function g(){
+			
+		}
+		
+	</script>
+</body>
+</html>

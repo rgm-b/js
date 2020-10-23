@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		html{
+			color:green;
+		}
+	</style>
+	<script>		
+		document.write("<style>body{background:yellow}</style>");
+		document.write("<div>Текст текст текст!!!</div>");
+
+			let timer;
+			let timerInterval;
+			
+			/*function demoSetTimeout(){
+				timer = window.setTimeout('console.log("Сработал таймер")', 3000);	//в глобальную переменную timer приходит ссылка
+			}*/
+
+			/*function demoSetTimeout(){
+				timer = window.setTimeout(
+				function (){console.log("Сработал таймер")}   //один из вариантов записи setTimeout (без кавычек, но оборачиваем в функцию)
+				, 3000);
+			}*/
+
+
+			//ещё вариант, функция foo отдельно написана
+			/*function foo(){console.log("Сработал таймер")}   
+			function demoSetTimeout(){
+				timer = window.setTimeout(
+						"foo()"
+						, 3000);
+			}*/
+
+			//либо ссылку на функцию foo
+			/*function foo(){console.log("Сработал таймер")}   
+			function demoSetTimeout(){
+				timer = window.setTimeout(
+						foo
+						, 3000);
+			}*/
+
+			//как передать параметр name в foo?
+			/*function foo(name){console.log(name)}   
+			function demoSetTimeout(){
+				timer = window.setTimeout(
+						function (){foo("Сработал таймер")}  //оборачиваем в анонимную функцию, которая вывызвает саму foo c параметром "Сработал таймер"
+						, 3000);
+			}*/
+
+			//через функцию конструктор
+			function User(message){
+				this.message = message;
+				this.say = function(){console.log(this.message);}
+			}
+			let message = new User('Таймер сработал');
+
+			function demoSetTimeout(){
+				timer = window.setTimeout(
+					/*message.say*/  //таким образом метод вызвался в контексте глобального объекта, поэтому получили undefined
+					function(){    //следовательно нужно сделать обвязку и вызвать функцию внутри неё
+						message.say()
+					}
+					, 2000)
+			}
+
+
+			function demoClearTimeOut(){
+				window.clearTimeout(timer);
+			}
+
+			function demoSetInterval(){
+				timerInterval = window.setInterval('console.log("Сработал интервал")', 1000);	
+			}
+			function demoClearInterval(){
+				window.clearInterval(timerInterval);
+			}
+
+
+	</script>
+</head>
+<body>
+
+	<div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim amet ut sapiente.</div>
+	<div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim amet ut sapiente.</div>
+
+	<button onclick='demoSetTimeout()'>setTimeout</button>
+	<button onclick='demoClearTimeOut()'>clearTimeOut</button>
+	<button onclick='demoSetInterval()'>demoSetInterval</button>
+	<button onclick='demoClearInterval()'>demoClearInterval</button>
+
+</body>
+</html>

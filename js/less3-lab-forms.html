@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<style>
+		form{
+			width: 300px;
+		}
+		input{
+			margin-bottom: 3px;
+			border-color: grey;
+		}
+		.submit{
+			display: none;
+		}
+	</style>
+</head>
+<body>
+	<h1>Проверка формы перед отправкой</h1>
+	
+	<form action="">
+		<fieldset>
+			<legend>Форма</legend>
+
+			<div>
+				<input type="text"><br>
+				<input type="text"><br>
+				<input type="text"><br>
+				<input type="text"><br>
+				<input type="text"><br>
+				<input type="text"><br>
+
+				<span style="border: 2px solid red"><input type="checkbox"></span><span>Согласен</span>
+				<br><br>
+				<div onclick="foo()">Передать форму</div>
+			</div>
+
+		</fieldset>
+		
+		
+	</form>
+
+	<script>
+		
+		
+		function foo(){
+			let inp;
+			let isEmpty = false;  //создаем флаг для будущей проверки - остались ли пустые поля?
+
+			for (let i=0 ; i<document.forms[0].length ; i++){
+				inp = document.forms[0].elements[i]; 
+				if (inp.type == 'text'){					
+					if(inp.value === ''){					
+						inp.style.borderColor = 'red';
+						isEmpty = true; // если есть хоть одно пустое поле, то флаг станем true
+					}else if(inp.value !== ''){					
+						inp.style.borderColor = 'green';
+					}	
+				}	
+
+				if (inp.type == 'checkbox'){
+					if(inp.cheked == false){
+						//inp.style.borderColor = 'red';
+					}
+				}
+
+
+			}	
+
+			if (isEmpty){
+				alert('заполните все поля');				
+			}else{
+				document.forms[0].submit();
+			}			
+
+		}
+
+		
+
+		
+		
+		
+
+		
+	</script>
+</body>
+</html>

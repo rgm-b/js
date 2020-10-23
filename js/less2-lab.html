@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<style>
+		a{
+			color:blue;
+			cursor: pointer;
+		}
+	</style>
+</head>
+<body>
+	<h1>Урок 2. Лабораторная работа</h1>
+	
+	<a onclick='winOpen(600,400);'>winOpen</a> <br>
+
+	<a onclick='docWrite();'>Запиши в открывшемся окне</a> <br>
+
+	<a onclick='demoClose()'>demoClose</a> <br>
+	
+	
+	<script>
+		let w;
+		let name = "ЭТО Я ЕГО ОТКРЫЛО!"
+
+		function winOpen(x, y){			
+			w = window.open('','name', 'width =' + x + ', height=' + y );
+			w.moveBy( (screen.availWidth - x) / 2 , (screen.availHeight - y) / 2 )
+			w.focus();			
+		}
+
+		function docWrite(){
+			if (w && !w.closed){
+				w.document.write('<div>Записал!</div>')
+				w.document.write('<script>alert(opener.name)<\/script>');  //name - глобальная переменная открывшего окна
+				w.focus();
+			}
+		}
+		
+		function demoClose(){
+			if (w && !w.closed ) { //проверяем было ли открыто окно И не закрыто ли (w.closed возвращает false, если окно не было закрыто)
+				w.focus();
+				w.close();
+			}
+			
+		}
+	</script>
+</body>
+</html>

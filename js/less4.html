@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<style>
+		a{
+			cursor: pointer;
+			background: #eee;
+			padding: 5px;
+			border:1px solid grey;
+		}
+	</style>
+</head>
+<body>
+	<h1>Урок 4. Форма. Селект, Опшн</h1>
+		
+	<form action="" name='myForm'>
+		<label for="selURL">Выберете адрес: </label>
+		<select id="selURL" name="selURL" id=""></select>
+		<a onclick="goToURL()">Переход</a>
+	</form>
+
+	<script>				
+
+			let links = {
+						'Яндекс' : 'https://ya.ru',
+						'Гугль' : 'https://google.com',
+						'Бинг' : 'https://bing.com',
+					}
+
+					let s = document.myForm.selURL;  
+
+					for (linkName in links){
+						let o = new Option();
+						o.text = linkName;
+						o.value = links[linkName];
+
+						s.add(o);
+					}
+
+					function goToURL(){
+						let s = document.myForm.selURL;
+						let url = s.options[s.selectedIndex].value;
+						location.assign(url);		
+						//console.log(ss)				
+					}
+		
+	</script>
+
+	<!-- <form action="" name='myForm'>
+		<label for="selURL">Выберете адрес: </label>
+		<select id="selURL" name="selURL" id=""></select>
+		<div onclick="goToURL()">Переход</div>
+	</form> -->
+</body>
+</html>

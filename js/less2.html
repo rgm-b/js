@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<style>
+		a{
+			color:blue;
+			cursor: pointer;
+		}
+	</style>
+</head>
+<body>
+	<h1>Урок 2.</h1>
+	
+	<a onclick='demoOpen()'>demoOpen</a> <br>
+	<a onclick='demoClose()'>demoClose</a> <br>
+	<a onclick='demoOpen("width=200,height=400")'>Открой окно с параметрами width, height</a> <br>
+	<a onclick='demoOpen()'>demoOpen</a> <br>
+	
+	<script>
+		let w;
+		function demoOpen(parameters){
+			// w = window.open();
+			// w = window.open('','name');
+			// w = window.open('', 'name', parameters);
+			// w = window.open('less1.html', 'name', parameters);
+			w = window.open('', 'name', parameters);
+			w.moveTo(200,100); //откроет окно по координатам х=200, y=100 отновительно левого верхнего угла экранаж			
+		}
+
+		function demoClose(){
+			w.close();
+
+		}
+	</script>
+</body>
+</html>

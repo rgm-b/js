@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<style>
+		.redText{
+			color:red;
+		}
+	</style>
+</head>
+<body>
+	<h1>Воссоздать HTML структуру с помощью JS</h1>
+	<button id='button1' onclick='foo()'>Появись</button>
+	<br><br>
+	<button id='button2' onclick='#'> Появись</button>
+
+	<!-- <ul>
+		<li>Первый лист итем</li>
+		<li class='redText'>Второй лист итем</li>
+		<li>Третий лист итем</li>
+		<li class='redText'>Четвёртый лист итем</li>
+	</ul> -->
+
+	<script>
+		function foo(){
+			button2.insertAdjacentHTML("afterend",  "<ul><li>sdfsdfsdsd</li><li class='redText'>Второй лист итем</li></ul>");			
+		}
+
+		
+		
+	</script>
+</body>
+</html>
