@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<style>
+		a{
+			text-decoration: none;
+			padding: 5px 8px;
+			background:#eee;
+			cursor: pointer;
+		}
+	</style>
+</head>
+<body>
+	<form action="">
+		<fieldset>
+
+			<legend>Изменение элементов списка</legend>
+			<label name="" id="">Год рождения </label>
+
+			<a onclick="foo(0)">-</a>
+			<select name="" id="">
+				<option value="1970">1970</option>
+				<option value="1971">1971</option>
+				<option value="1972">1972</option>
+				<option value="1973">1973</option>
+				<option value="1974">1974</option>
+				<option value="1975">1975</option>
+			</select>			
+			<a onclick="foo(1)">+</a>
+
+		</fieldset>
+	
+	</form>
+	
+	<script>
+		
+
+		function foo(flag){
+			let val, opt;
+			let s = document.forms[0].elements[1];
+
+			if (flag){
+				// let o = new Option();
+				// o.val = s.options[s.length - 1].value * 1 + 1;
+				// o.text = o.val;
+				// s.add(o, null)
+				val = s.options[s.length-1].value * 1 + 1;
+				opt = new Option(val, val, false, true);
+				try{
+					s.add(opt,null);
+				}catch{
+					s.add(opt);
+				}
+				
+			}else{
+				val = s.options[0].value * 1 - 1;
+				opt = new Option(val, val, false, true);
+				try{
+					s.add(opt, s.options[0]);
+				}catch{
+					s.add(opt, 0);
+				}				
+				
+			}
+			
+
+			
+		}
+	</script>
+</body>
+</html>

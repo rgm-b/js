@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<style>
+		a{
+			cursor: pointer;
+			padding: 5px;
+			background: #eee;
+			display: inline-block;
+			margin: 3px;
+			user-select: none;
+		}
+	</style>
+</head>
+<body>
+	<h1>Использование изображений</h1>
+
+	<img src="img/red.png" width="200" height="200"><br>
+	<a onclick="changeImage()">Сменить картинку</a><br>
+	<a onclick="loopImage()">Менять картинки циклически</a><br>
+
+    <a onclick="resizeImage()">Изменить размер</a><br>
+	<img src="img/nature.jpg" width="60" height="57">
+	
+	<script>
+		
+
+		function changeImage(){		
+			let i = document.images[0];
+			i.src = "img/green.jpg";						
+		}
+
+		let flag = false;
+		function loopImage(){
+			let i = document.images[0];
+			if(flag){
+				i.src = "img/red.png";				
+			}else{
+				i.src = "img/green.jpg";	
+
+			}
+			flag = !flag;	
+		}
+
+		function resizeImage(){
+			let i = document.images[1];
+			let normalWidth = 600;
+			if(i.width < normalWidth){
+				i.width *= 1.1;
+				i.height *= 1.1				
+				setTimeout('resizeImage()', 20)
+			}
+			
+		}
+
+	</script>
+</body>
+</html>

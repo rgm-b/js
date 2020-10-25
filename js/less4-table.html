@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<style>
+		thead,
+		tfoot {
+		    background-color: #3f87a6;
+		    color: #fff;
+		}
+
+		tbody {
+		    background-color: #e4f0f5;
+		}
+
+		caption {
+		    padding: 10px;
+		    caption-side: bottom;
+		}
+
+		table {
+		    border-collapse: collapse;
+		    border: 2px solid rgb(200, 200, 200);
+		    letter-spacing: 1px;
+		    font-family: sans-serif;
+		    font-size: .8rem;
+		}
+
+		td,
+		th {
+		    border: 1px solid rgb(190, 190, 190);
+		    padding: 5px 10px;
+		}
+
+		td {
+		    text-align: center;
+		}
+
+	</style>
+</head>
+<body>
+	<!-- <table id='table1'>
+	    <caption>Council budget (in £) 2018</caption>
+	    <thead>
+	        <tr>
+	            <th>Items</th>
+	            <th scope="col">Expenditure</th>
+	        </tr>
+	    </thead>
+	    <tbody>
+	        <tr>
+	            <th scope="row">Donuts</th>
+	            <td>3,000</td>
+	        </tr>
+	        <tr>
+	            <th scope="row">Stationery</th>
+	            <td>18,000</td>
+	        </tr>
+	    </tbody><br><br>
+	</table> -->
+
+
+	<table id="tbl">
+		<caption>
+			Таблица
+		</caption>
+	</table>
+	<button onclick="createContent()">Создать таблицу</button>
+
+	<script>
+		// let table1 = document.getElementById('table1');
+		// console.log (table1.tHead);
+		// console.log (table1.tFoot);
+		// console.log (table1.tBodies);
+		// console.log (table1.tBodies[0]);
+		// console.log (table1.rows);
+
+
+
+
+
+		var td_count = 10;  //количество ячеек
+		var t; //таблица
+
+		function createContent(){
+			//t = window.tbl;          ВОТ ТУТ Я ПОПРАВИЛ!!!
+			t = document.getElementById('tbl');
+
+			//вызываем функцию генерации строк для разных секций
+			if(!t.rows.length){
+				create(t.tBodies[0] || t, 4);
+				create(t.createTHead(), 2);
+				create(t.createTFoot(), 3 );
+			}
+
+			function create(section, tr_count){
+				for(var i=0, tr ; i<tr_count ; i++){
+					//добавляем строку в секцию
+					//длина коллекции меняется динамически
+					tr = section.insertRow(section.rows.length);
+					//а вот тут и надо ставить обработчик клика на строке
+				//tr.onclick = deleteRow;
+
+					for(var j=0, td ; j<td_count ; j++){
+						//добавляем ячейку в строку
+						td = tr.insertCell(tr.cells.length);
+						//в ячейке пишем номер ячейки
+						td.innerHTML = tr.cells.length;
+
+						//в элементе <sup> ставим номер строки
+						td.innerHTML += '<sup>' + section.rows.length + '</sup>';
+						//td.textContent += '<sup>' + section.rows.length + '</sup>';
+					}
+					
+				}				
+
+			}
+
+		}
+
+
+
+	</script>
+</body>
+</html>

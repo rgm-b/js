@@ -6,10 +6,12 @@
 	<title>Document</title>
 	<style>
 		a{
+			visibility: hidden;
 			cursor: pointer;
 			background: #eee;
 			padding: 5px;
 			border:1px solid grey;
+			text-decoration: none;
 		}
 	</style>
 </head>
@@ -17,35 +19,62 @@
 	<h1>Урок 4. Форма. Селект, Опшн</h1>
 		
 	<form action="" name='myForm'>
-		<label for="selURL">Выберете адрес: </label>
-		<select id="selURL" name="selURL" id=""></select>
-		<a onclick="goToURL()">Переход</a>
+		<label for="selURL" disabled>Выберете адрес: </label>
+		<select id="selURL" name="selURL" id="" disabled></select>   <!--  disabled  -->
+		<a href="#" onclick="goToURL()">Переход</a><br><br>
+		<a href="#" onclick="selected()">Выбрать Гугль</a>
 	</form>
 
-	<script>				
+	<script>	
 
-			let links = {
+			/*let links = {
 						'Яндекс' : 'https://ya.ru',
 						'Гугль' : 'https://google.com',
 						'Бинг' : 'https://bing.com',
-					}
+					}*/
 
-					let s = document.myForm.selURL;  
+			let links = new Object();
+			links['Яндекс'] = 'https://ya.ru';
+			links['Гугль'] = 'https://google.com';
+			links['Бинг'] = 'https://bing.com';
 
-					for (linkName in links){
-						let o = new Option();
-						o.text = linkName;
-						o.value = links[linkName];
+			let s = document.myForm.selURL;  
 
-						s.add(o);
-					}
+			for (linkName in links){
+				// let o = new Option();
+				// o.text = linkName;
+				// o.value = links[linkName];
 
-					function goToURL(){
-						let s = document.myForm.selURL;
-						let url = s.options[s.selectedIndex].value;
-						location.assign(url);		
-						//console.log(ss)				
-					}
+				let o = new Option (linkName, links[linkName]);
+				
+				try{					//
+					s.add(o, null);  
+				}catch{
+					s.add(o);  
+				}
+				
+			}
+
+			let f = s.form;
+			for (i=0 ; i< f.elements.length; i++){  // уберём disabled со всех эллементов формы
+				f.elements[i].disabled = false;
+			}
+
+
+
+			function goToURL(){
+				let s = document.myForm.selURL;
+				let url = s.options[s.selectedIndex].value;
+				location.assign(url);		
+				//console.log(ss)				
+			}
+
+			function selected(){
+				s.options[1].selected = true;
+			}
+
+			document.links[0].style.visibility = 'visible';
+			document.links[1].style.visibility = 'visible';
 		
 	</script>
 
