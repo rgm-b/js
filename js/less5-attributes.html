@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+<body>
+	<h1>Манипуляция атрибутами элемента</h1>
+
+	<button onclick="changeAttribute()">Изменить атрибут align</button>
+
+	<p align="left">В этом примере есть несколько параграфов текста</p>
+
+	<p align="right">Причем эти параграфы находятся на разном уровне</p>
+
+	<div>
+		<p align="left">Например, некоторые из них вложены в DIV</p>
+
+		<p align="right">Вложенный P в DIV</p>
+	</div>
+	
+	<p align="left">Это последний параграф</p>
+	
+	<script>
+		function changeAttribute(){
+			let allP = document.getElementsByTagName('p');
+			//console.log(p);
+			let p;
+			for (i=0; i<allP.length ; i++){
+				p = allP[i];
+				if(p.getAttribute('align') == 'left'){
+					p.setAttribute('align', 'right');
+				}else{
+					p.setAttribute('align', 'left');
+				}
+			}
+			
+		}
+	</script>
+</body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<style>
+		body{
+			background: #c1bfbb;
+			margin: 10px;
+		}
+		div{
+			border: 2px solid #fff;
+			padding: 10px;
+			margin-bottom: 5px;
+
+		}
+		p{
+			background: #fff;
+			padding: 10px;
+		}
+	</style>
+	
+</head>
+<body>
+	<div id="d">
+		<button onclick="appendLast()">Добавь последним</button>
+		<button onclick="insertBeforeElement()">Добавь перед каким-либо элементом</button>
+		<button onclick="cloneP()">Склонируй и добавь последним</button>
+		<button onclick="deleteEl()">Удалить клон</button>
+		<p>Первый параграф</p>
+		<p id="clickable"><a href="">Второй <b>кликабельный</b> параграф</a></p>
+		<p>Третий параграф</p>
+	</div>
+	<div>
+		<p>Четвертый параграф</p>
+		<p>Пятый параграф</p>
+	</div>
+	<p>Шестой параграф</p>
+	<p>Седьмой и последний параграф</p>
+
+	<script>
+		let firstDiv = document.getElementById('d');
+		console.log(firstDiv);
+		
+		let newP = document.createElement('p');
+		console.log(newP);
+
+		let textNode = document.createTextNode('N-цатый параграф');
+		console.log(textNode);
+
+		newP.appendChild(textNode);  //добавляем в <p> текстовый узел, newP меняется
+		console.log(newP);
+
+		function appendLast(){
+			firstDiv.appendChild(newP);
+		}
+
+		function insertBeforeElement(){
+			let secondP = document.getElementById('clickable');
+			firstDiv.insertBefore(newP, secondP);
+		}
+
+		let cloneNewP;
+		function cloneP(){
+			cloneNewP = newP.cloneNode(true);  //true - скопировать со всеми потомками			
+			firstDiv.appendChild(cloneNewP);
+		}
+
+		let deleteP;
+		let deleteFlag = true;
+		function deleteEl(){
+			if (deleteP){
+				deleteP = firstDiv.removeChild(cloneNewP);	
+			}			
+			console.log('Удалённый cloneNewP остался в переменной deleteP')
+			deleteFlag = false;
+		}
+
+	</script>
+</body>
+</html>

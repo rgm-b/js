@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+<script>
+	function showDOM(){
+		var w = window.open();
+		w.document.write('<html><body>');
+		showChildNodes(document.body, w.document);
+		w.document.write('</body></html>');
+	}
+
+	function showChildNodes(node, doc){
+		if(node.nodeType == 3)
+			doc.write('<i>'+ node.nodeValue +'<i><br>');
+		if(node.nodeType == 1)
+			doc.write('<b>' + node.nodeName + '</b>' +' ')
+
+		for(let i=0; i < node.childNodes.length ; i++){				
+			showChildNodes(node.childNodes[i], doc);
+			//doc.write('</ul></li>');
+		}
+
+	}
+	
+	
+</script>
+<body>
+	<h1>Структура DOM</h1>
+	<div>
+		<h2>Вывод структуры DOM</h2>
+		<p>Этот код открывает новое окно и выводит в него структуру текущего документа</p>
+	</div>
+	<div>
+		<h2>Запуск кода</h2>
+		<p>Для запуска нажмите</p>
+		<button onclick="showDOM()">здесь</button>
+	</div>	
+</body>
+</html>
