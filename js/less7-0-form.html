@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+<body>
+	<h1>Урок 7. Отмена отправки формы.</h1>
+
+	<form action="https://google.com" name="search" onsubmit="return foo()">  <!-- return false в таком случае форма не отправляется-->
+		<input type="text" name="q" value="Булочка">
+		<button>Отправить</button>
+	</form>
+	
+	<script>
+		function foo(){
+			alert('Hello');
+			return false; //чтобы форма не отправлялась по умолчанию
+		}
+	</script>
+</body>
+</html>
