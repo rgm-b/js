@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -25,9 +25,9 @@
 <body>
 	<div id="d">
 		<button onclick="appendLast()">Добавь последним</button>
-		<button onclick="insertBeforeElement()">Добавь перед каким-либо элементом</button>
+		<button onclick="insertBeforeElement()">Добавь перед вторым элементом</button>
 		<button onclick="cloneP()">Склонируй и добавь последним</button>
-		<button onclick="deleteEl()">Удалить клон</button>
+		<button onclick="deleteEl()()">Удалить клон</button>
 		<p>Первый параграф</p>
 		<p id="clickable"><a href="">Второй <b>кликабельный</b> параграф</a></p>
 		<p>Третий параграф</p>
@@ -67,15 +67,19 @@
 			firstDiv.appendChild(cloneNewP);
 		}
 
-		let deleteP;
-		let deleteFlag = true;
 		function deleteEl(){
-			if (deleteP){
-				deleteP = firstDiv.removeChild(cloneNewP);	
-			}			
-			console.log('Удалённый cloneNewP остался в переменной deleteP')
-			deleteFlag = false;
+			let deleteP;
+			let deleteFlag = true;
+			return function(){
+				if (deleteFlag){
+					deleteP = firstDiv.removeChild(cloneNewP);	
+				}			
+				console.log('Удалённый cloneNewP остался в переменной deleteP внутри функции deleteEl()')
+				deleteFlag = false;
+			}
+
 		}
+		
 
 	</script>
 </body>

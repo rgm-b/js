@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<style>
+		body{
+			background: #c1bfbb;
+			margin: 10px;
+		}
+		div{
+			border: 2px solid #fff;
+			padding: 10px;
+			margin-bottom: 5px;
+
+		}
+		p{
+			background: #fff;
+			padding: 10px;
+		}
+	</style>
+	
+</head>
+<body>
+	<div id="d">
+		<button onclick="f()">Добавь фрагмент документа в каждый div</button>
+		<!-- <button onclick="insertBeforeElement()">Добавь перед каким-либо элементом</button>
+		<button onclick="cloneP()">Склонируй и добавь последним</button>
+		<button onclick="deleteEl()">Удалить клон</button> -->
+		<p>Первый параграф</p>
+		<p id="clickable"><a href="">Второй <b>кликабельный</b> параграф</a></p>
+		<p>Третий параграф</p>
+	</div>
+	<div>
+		<p>Четвертый параграф</p>
+		<p>Пятый параграф</p>
+	</div>
+	<p>Шестой параграф</p>
+	<p>Седьмой и последний параграф</p>
+
+	<script>
+		function f(){
+			let i = document.createElement('em');
+			i.appendChild(document.createTextNode('курсив ') );
+			let b = document.createElement('strong');
+			b.appendChild(document.createTextNode('жирный '));
+			let t = document.createTextNode('текст');
+			let br = document.createElement('br');
+			let f = document.createDocumentFragment(); //создаём фрагмент документа
+			f.appendChild(i);
+			f.appendChild(b);
+			f.appendChild(t);
+			f.appendChild(br);
+			console.log(f)
+			let d = document.getElementsByTagName('div');  //получаем коллекцию div
+			//console.log(d[0]);
+			//d[1].appendChild(f);
+
+			for(let i=0 ; i<d.length ; i++){
+				//d[i].appendChild(f.cloneNode(true));  //добавим в конец каждого элемента <div>
+				d[i].insertBefore(f.cloneNode(true), d[i].firstChild);  //добавим в начало <div> перед first child
+			}
+		}
+
+	</script>
+</body>
+</html>
