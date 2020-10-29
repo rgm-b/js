@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<style>
+		.redText{
+			color:red;
+		}
+		.greenText{
+			color:green;
+		}
+	</style>
+</head>
+<body>
+	<button onclick="fillContent()">Появись</button> <button onclick="delContent()">Удались</button>
+
+	<div id="d"></div>
+
+	<script>
+
+		let div = document.getElementById('d');
+		function fillContent(){
+			let txt = '<ul>'
+			txt += '<li>один</li>'
+			txt += '<li class="redText">два</li>'
+			txt += '<li>три</li>'
+			txt += '<li class="greenText">четыре</li>'
+			txt += '</ul>'
+			div.innerHTML = txt;
+		}
+
+		function delContent(){
+			div.innerHTML = "";
+		}
+	</script>
+</body>
+</html>
