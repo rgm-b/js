@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<style>
+		div{
+			border:1px solid grey;
+			padding: 10px;
+			margin-bottom: 10px;
+		}
+		p{
+			background: grey;
+			margin: 5px;
+			padding: 5px 15px;
+			color:#fff;
+		}
+	</style>
+</head>
+<body>
+	<h1>Урок 7. Отслеживание элемента по которому кликнули мышью</h1>
+
+	<div id="d">
+		<p id="p1" onclick="foo(this)">Кликнуть здесь 1</p>
+		<p id="p2" onclick="foo(this)">Кликнуть здесь 2</p>
+		<p id="p3" onclick="foo(this)">Кликнуть здесь 3</p>
+	</div>
+
+	<div id="d2">Клинкуть</div>
+	
+	<script>
+		function foo(el){
+			console.log(el);
+		}
+
+
+		/*function bar(){
+			console.log(this);
+		}
+		let div = document.getElementById('d');
+		div.onclick = bar;*/
+
+
+		function bar1(){
+			console.log('bar-1');
+		}
+		function bar2(){
+			console.log('bar-2');
+		}
+		let div = document.getElementById('d');
+
+		// div.onclick = bar1;
+		// div.onclick = bar2;
+
+		div.onclick = function (){
+			bar1.call(div);
+			bar2.call(div);
+		}
+
+
+
+
+		let div2 = document.getElementById('d2');
+		div2.addEventListener('click', bar1, false)
+	</script>
+</body>
+</html>

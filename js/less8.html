@@ -1,0 +1,93 @@
+ <!DOCTYPE html>
+ <html lang="ru">
+ <head>
+ 	<meta charset="UTF-8">
+ 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+ 	<title>Document</title>
+ 	<style>
+ 		ul.expandable li{
+ 			list-style-image: url(img/point.png);
+
+ 		}
+ 		ul.expandable li a{
+ 			font-size: 20px;
+ 		}
+ 		
+ 		li ul.expandable{
+ 			display: block; /*выставить none*/
+ 		}
+ 	</style>
+ </head>
+ <body>
+ 	<h1>Пример раскрывающегося списка</h1>
+
+ 	<ul class="expandable">
+ 		<li>
+ 			<a href="#">Книги</a>
+ 			<ul class="expandable">
+ 				<li>
+ 					<a href="#">Отечественные</a>
+ 					<ul class="expandable">
+ 						<li><a href="#">Детективы</a></li>
+ 						<li><a href="#">Научная фантастика</a></li>
+ 						<li><a href="#">Исторические</a></li>
+ 					</ul>
+ 				</li>
+ 				<li>
+ 					<a href="#">Зарубежные</a>
+ 					<ul class="expandable">
+ 						<li><a href="#">Детективы</a></li>
+ 						<li><a href="#">Научная фантастика</a></li>
+ 						<li><a href="#">Исторические</a></li>
+ 					</ul>
+ 				</li> 				
+ 			</ul>
+ 		</li>
+ 		<li>
+ 			<a href="#">DVD</a>
+ 			<ul class="expandable">
+ 				<li>
+ 					<a href="#">Отечественные</a>
+ 					<ul class="expandable">
+ 						<li><a href="#">Детективы</a></li>
+ 						<li><a href="#">Научная фантастика</a></li>
+ 						<li><a href="#">Исторические</a></li>
+ 					</ul>
+ 				</li>
+ 				<li>
+ 					<a href="#">Зарубежные</a>
+ 					<ul class="expandable">
+ 						<li><a href="#">Детективы</a></li>
+ 						<li><a href="#">Научная фантастика</a></li>
+ 						<li><a href="#">Исторические</a></li>
+ 					</ul>
+ 				</li> 				
+ 			</ul>
+ 		</li>
+ 	</ul>
+
+
+ 
+ <script>
+ 	function setPlusIcon(){
+ 		//let allLI = document.querySelectorAll('li');
+ 		let allLI = document.getElementsByTagName('li');  //выбираем все LI в коллекцию
+		for(let i=0 ; i < allLI.length ; i++){
+			let li = allLI[i];
+			//console.log(li);
+			let allUL = li.getElementsByTagName('ul');
+			//console.log(allUL, '!!!')
+			if( allUL.length>0){
+				if(allUL[0].className == 'expandable'){
+					li.style.listStyleImage = 'url(img/plus.png)';
+				}
+			}
+		}
+ 	}
+ 	setPlusIcon()
+
+
+ </script>
+ 	
+ </body>
+ </html>
