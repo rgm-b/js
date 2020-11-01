@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+<body>
+	<h1>Собрать дату в формате HH:MM:SS DD.MM.YYYY</h1>
+	
+	<script>
+		let defaultDate = new Date();
+		let newFormatDate ='';
+
+		let hours = defaultDate.getHours();
+
+		let minutes = defaultDate.getMinutes();
+
+		let seconds = defaultDate.getSeconds();
+
+		let date = defaultDate.getDate();
+		let month = defaultDate.getMonth();  //+1
+		let year = defaultDate.getFullYear();
+
+		function adjustment(time){
+			if( (time+'').length === 1 ){
+					time = '0' + time;
+				}			
+			return time;
+		}
+		hours = adjustment(hours)
+		minutes = adjustment(minutes);
+		date = adjustment(date);
+		month = adjustment(month);
+		seconds = adjustment(seconds);
+
+
+		newFormatDate = hours +':'+ minutes +':'+ seconds +' '+ date +'.'+ month  +'.'+  year;
+
+		console.log(newFormatDate);		
+
+	</script>
+</body>
+</html>
