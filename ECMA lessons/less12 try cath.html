@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+<body>
+	<h1>Урок12. Перехват ошибок try(попытка, проба) cath(ловить) и создание исключений throw new Error()</h1>
+
+	<script>
+		/*try{
+			let x = 10;
+			console.log(x*10);
+		}catch(e){
+
+		}
+		console.log('The end');*/
+
+
+		/* try{
+			let x = 10;
+			console.log(x*y);  //тут будет ошибка, но выполнение скрипта не остановится
+		}catch(e){
+			console.log(e.name);  //имя ошибки
+			console.log(e.message);  //сообщение ошибки
+		}
+		console.log('The end'); */
+
+
+		/* try{
+			let x = 10, y = 0;
+			if(y === 0)
+				throw new Error("На 0 делить нельзя!"); //создаем ошибку сами, допустим для калькулятора
+			if(y === 1)
+				throw new Error("На 1 делить нельзя!");  //таких исключений можно создать сколь угодно много
+			if(y === 2)
+				throw new Error("На 2 делить нельзя!");
+			console.log(x/y);
+		}catch(e){
+			console.log(e.name, e.message);
+		}
+		console.log('The end'); */
+
+
+
+		//Можно вынести все ошибки в отдельное место в коде
+		let err0 = new Error("На 0 делить нельзя!");  //typeof err0 "object"
+		let err1 = new Error("На 1 делить нельзя!"); 
+		let err2 = new Error("На 2 делить нельзя!");
+
+		try{
+			let x = 10, y = 0;
+			if(y === 0)
+				throw err0;
+			if(y === 1)
+				throw err1;
+			if(y === 2)
+				throw err2;
+			console.log(x/y);
+		}catch(e){
+			console.log(e.name, e.message);
+		}
+		console.log('The end');
+
+
+	</script>
+	
+</body>
+</html>
