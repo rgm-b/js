@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+<body>
+	<h1>Урок 12. Дата</h1>
+	<p>Принимаем дату строкой, проверяем её регулярным выражением и переводим её объект js</p>
+	
+	<script>
+		function getDate(str){
+			let f = str.match(/([0-3]?\d)-([0-1]?\d)-(\d{4})/);			
+			if(f){
+				return new Date(f[3] , f[2]-1 , f[1]);
+			}
+		}
+
+		let d = getDate('01-11-2020');
+		console.log(d);
+		
+	</script>
+</body>
+</html>
