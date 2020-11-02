@@ -11,10 +11,12 @@
 	
 	<script>
 		function getDate(str){
-			let f = str.match(/([0-3]?\d)-([0-1]?\d)-(\d{4})/);			
-			if(f){
-				return new Date(f[3] , f[2]-1 , f[1]);
-			}
+			let f = str.match(/(\d?\d)-(\d?\d)-(\d{4})/); //проверяем дату на числа и возвращаем массив f со ссылками 1 , 2 , 3, в f[0] приходит вся строка		
+			if(!f)
+				throw new Error('Неправильная дата');
+			//console.log(f);
+			return new Date(f[3] , f[2]-1 , f[1]);
+			
 		}
 
 		let d = getDate('01-11-2020');
