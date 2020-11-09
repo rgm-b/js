@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<style>
+		p{			
+			background-color: #eee;
+			padding: 20px;
+			
+			cursor: pointer;
+			user-select: none;
+
+		}
+		#news span.hidden{
+			display: inline-block;				
+			color: white;
+			background-color: grey;
+			padding: 10px;
+			border-radius: 4px;
+			margin: 20px 10px 10px 0;
+		}
+
+		table#courses{
+			border-spacing: 0px;
+			border:1px solid grey;
+		}
+		table#courses tr{
+			background-color: #eee;
+		}
+		table#courses td{			
+			padding: 5px 20px ;
+			border-bottom: 1px solid grey;
+			border-right: 1px solid #dbdcdc;
+		}
+		table#courses tr:last-child td{
+			border-bottom:none;
+		}
+		table#courses td:last-child{
+			border-right: none;
+		}
+	</style>
+</head>
+<body>
+	<h1>Урок 4. Лабораторная работа. Показать/скрыть элементы. Заменить стили по клику и наведению мышью, отмена всплытия пузырька и др</h1>
+
+	<div id="news">
+		<p>Lorem ipsum, dolor sit amet consectetur adipisicing, elit. Nisi consectetur quam facilis tenetur praesentium ducimus maiores ut facere suscipit ipsam. Impedit tempore distinctio, excepturi, at eum atque esse, nostrum omnis unde dolor praesentium corporis voluptas ducimus veniam! Necessitatibus, nam, quia?
+			<br>
+			<span class="hidden">Новость 1</span>
+			<span class="hidden">Новость 2</span>
+			<span class="hidden">Новость 3</span>
+			<span class="hidden">Новость 4</span>
+		</p>		
+	</div>	
+	<div id="news">
+		<p>Lorem ipsum, dolor sit amet consectetur adipisicing, elit. Nisi consectetur quam facilis tenetur praesentium ducimus maiores ut facere suscipit ipsam. Impedit tempore distinctio, excepturi, at eum atque esse, nostrum omnis unde dolor praesentium corporis voluptas ducimus veniam! Necessitatibus, nam, quia?
+			<br>
+			<span class="hidden">Новость 1</span>
+			<span class="hidden">Новость 2</span>
+			<span class="hidden">Новость 3</span>
+			<span class="hidden">Новость 4</span>
+		</p>		
+	</div>	
+
+	<table id="courses">
+		<tbody>
+			<tr>
+				<td>текст текст текст</td>
+				<td>текст</td>
+				<td>текст текст</td>
+				<td>текст</td>
+				<td>текст текст текст текст</td>
+			</tr>
+			<tr>
+				<td>текст</td>
+				<td>текст</td>
+				<td>текст</td>
+				<td>текст</td>
+				<td>текст</td>
+			</tr>
+			<tr>
+				<td>текст</td>
+				<td>текст</td>
+				<td>текст</td>
+				<td>текст</td>
+				<td>текст</td>
+			</tr>
+			<tr>
+				<td>текст</td>
+				<td>текст</td>
+				<td>текст</td>
+				<td>текст</td>
+				<td>текст</td>
+			</tr>
+			<tr>
+				<td>текст</td>
+				<td>текст</td>
+				<td>текст</td>
+				<td>текст</td>
+				<td>текст</td>
+			</tr>
+			<tr>
+				<td>текст</td>
+				<td>текст</td>
+				<td>текст</td>
+				<td>текст</td>
+				<td>текст</td>
+			</tr>
+			<tr>
+				<td>текст</td>
+				<td>текст</td>
+				<td>текст</td>
+				<td>текст</td>
+				<td>текст</td>
+			</tr>
+			<tr>
+				<td>текст</td>
+				<td>текст</td>
+				<td>текст</td>
+				<td>текст</td>
+				<td>текст</td>
+			</tr>
+			<tr>
+				<td>текст</td>
+				<td>текст</td>
+				<td>текст</td>
+				<td>текст</td>
+				<td>текст</td>
+			</tr>
+			<tr>
+				<td>текст</td>
+				<td>текст</td>
+				<td>текст</td>
+				<td>текст</td>
+				<td>текст</td>
+			</tr>
+		</tbody>
+	</table>
+	
+	<script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+	<script>
+
+		$('*').on('click', function(e){
+			e.stopPropagation(); //отменяем всплытие
+			//console.log('hello')
+		})
+
+		let $span = $('div#news span.hidden');
+		$span.hide();
+		$span.css('cursor', 'wait');
+		$span.on('click', function(){
+			console.log('span')
+		});
+		
+		$('p').on('click', function(){				
+
+			/*if ( $span.css('display') === 'inline' ){
+				$span.css('display', 'none');
+			}else{
+				$span.css('display', 'inline');
+			}*/
+			
+			$(this).children('span').toggle();
+		});
+
+
+
+		//Таблица
+
+		/* $('tr').on('mouseenter', function(){
+			$(this).css('background-color','#fff');
+			$(this).children('td').eq(3).css('font-weight', 'bold');
+		});
+		$('tr').on('mouseleave', function(){
+			$(this).css('background-color','');  //оставляем вторым параметром в css '' пустую строку, чтобы вернуть значение заданное по умолчанию
+			$(this).children('td').eq(3).css('font-weight', '');
+		});
+		*/
+
+
+		function changeTableColor(eType, $obj){
+			let bg = '';
+			let fw = '';
+			if(eType === 'mouseenter'){
+				bg = '#fff';
+				fw = 'bold';
+			}
+			$obj.css('background', bg)
+				.children('td').eq(3).css('font-weight', fw);
+		}
+
+		$('tr').on('mouseenter mouseleave', function(e){
+			changeTableColor(e.type, $(this));
+		});
+
+	</script>
+</body>
+</html>
