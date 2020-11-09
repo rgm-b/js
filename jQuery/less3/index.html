@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<style>
+		body{
+			text-align: center;
+		}
+		hr{
+			margin: 40px;
+		}
+		div#box{
+			background: #eee;
+			width:50%;
+			margin:auto;
+			border:3px dotted green;
+			text-align: center;
+		}
+		div#buttons{
+			width: 50%;
+			margin: auto;
+		}
+	</style>
+	<script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+	<script> 
+		$(function(){ //оборачиваем в функцию весь скрипт, для корректной работы при нахождении скрипта над body
+
+			/*$('button').click(function(){
+				console.log('Кнопка нажата');
+			})*/
+
+			//$('button').on('click', function(){
+			//	let $this = $(this);	//в this попадает html button элемент (по которому кликнули), делаем ему обертку $(), чтобы он стал jQ объектом и сохраняем
+			//	console.log($this);	    //в переменную $this, чтобы избежать лишних скобок в console.log
+
+			//	$(this).text("Поменяли текст");
+			//})
+
+			function toggle(obj){
+				obj
+				  .siblings('button')
+					.removeAttr('disabled')
+				  .end()	//обратно возвращаемся к obj
+					.attr('disabled', 'disabled')
+			}
+
+			$('#hide').on('click', function(){
+				$('#box').hide();
+				toggle($(this));
+				//$(this).attr('disabled', 'disabled');
+				//$(this).siblings('button').removeAttr('disabled');
+			})
+			$('#show').on('click', function(){
+				$('#box').show();
+				toggle($(this));
+				//$(this).attr('disabled', 'disabled');
+				//$(this).siblings('button').removeAttr('disabled');
+			});
+
+
+			$('#toggleText').on('click', function(){
+				if( $('#box').is(':visible') ){
+					$('#box').hide();
+					$(this).text('Показать');
+				}else{
+					$('#box').show();
+					$(this).text('Скрыть');
+				}
+			});
+
+			
+
+			$('#toggle').on('click', function(){
+				$('#box').toggle();  // скрыть\показать елемент с id box
+			});
+			$('#box').on('click', function(){
+				$('#toggle').trigger('click');
+			});
+
+
+
+				
+			$(document).on('click', function(e){ //как только мы указали параметр в ф-ии, там появляется автоматически объект event
+				console.log('type', e.type);	//click   ловим событие e
+				console.log('which', e.which); //какая кнопка мыши была нажата (левая это 1)
+				console.log('target', e.target); //текущий элемент (html), по которому совершился клик
+				console.log('currentTarget', e.currentTarget); //баблинг, всплытие до самого верхнего элемента у которого есть одноименное событие (click)
+				console.log('pageX:pageY', e.pageX + ':' + e.pageY); // координаты места по которому произошел клик
+
+			});
+			
+
+			$('#box').on('click', {x:10, y:20}, function(e){
+				console.log(e.data.x, e.data.y);
+				console.log('hello');
+				e.preventDefault();	//отмена действия по умолчанию
+				e.stopPropagation(); //отмена баблинга
+			});
+
+
+			$('*').add([document, window]).on('click', function(e){   //у всех
+				e.stopPropagation();		//отменяем всплытие (баблинг)
+			});
+
+
+
+
+
+
+
+		}); //конец обёртки скрипта, для работы над body
+	</script>
+</head>
+<body>
+	<h1>Урок3. События.</h1>
+	<h2>Назначение событий, отмена событий. Отменить действие по умолчанию.</h2>
+	<div id="buttons">
+		<button id="hide">Hide</button>
+		<button id="show">Show</button>	
+		
+		<button id="toggle">Переключить</button>
+		<button id="toggleText">Переключить</button>
+	</div>
+	<div id="box">
+		<h1>Привет всем!</h1>
+	</div>
+    <hr>
+	<h2>Наведение курсором на элемент. Вывод курсора из элемента. + два события сразу</h2>	
+	<button id="mouseEnter">
+		Наведи
+	</button>
+	<button id="mouseLeave">
+		Выведи
+	</button>
+	<button id="mouseEnterAndLeave">
+		Наведи+выведи (см. консоль)
+	</button>
+    <hr>
+	<h2>Передача параметров в функцию.</h2>
+	<button id="parameterPassing">Нажми</button>
+
+	<script>
+		$('button#mouseEnter').on('mouseenter', function(){
+			$(this).css('background', 'red');
+			console.log('Сработает при наведение курсора на элемент');
+		});
+		$('button#mouseLeave').on('mouseleave', function(){
+			$(this).css('background', 'red');
+			console.log('Сработает при выводе курсора из элемента');
+		});
+		$('button#mouseEnterAndLeave').on('mouseenter mouseleave', function(){
+			console.log('Сработает как при наведение, так и при вызоде курсора из элемента');
+
+		});
+
+		$('button#parameterPassing').on('click', {x:10, y:20}, function(e){  //параметры можно передать в объекте
+			console.log(e.data.x);						
+			console.log(e.data.y); 		//параметры передадутся в свойство .data
+		});
+	</script>
+
+	<!-- <script src="main.js"></script> -->
+
+</body>
+</html>
