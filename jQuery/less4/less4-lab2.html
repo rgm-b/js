@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<style>
+		table#courses{
+			border-spacing: 0px;
+			border:1px solid grey;
+			text-align: center;
+		}
+		table#courses tr{
+			background-color: #eee;
+		}
+		table#courses td{			
+			padding: 5px 20px ;
+			border-bottom: 1px solid grey;
+			border-right: 1px solid #dbdcdc;
+		}
+		table#courses tr:last-child td{
+			border-bottom:none;
+		}
+		table#courses td:last-child{
+			border-right: none;
+		}
+	</style>
+</head>
+<body>
+	<div id="text">
+		<p>Lorem ipsum dolor sit, amet.</p>
+		<p>Сюда вставим через запятую кодом слова из 5й колонки фильтруя одинаковые: </p>		
+	</div>
+	<div>
+		<p>Lorem ipsum dolor sit amet consectetur adipisicing.</p>
+		<p>И сюда для разнообразия: <span id="transport"></span></p>		
+	</div>
+
+	<table id="courses">
+		<tbody>
+			<tr>
+				<td>Текст 1</td>
+				<td>Текст 2</td>
+				<td>Текст 3</td>
+				<td>Текст 4</td>
+				<td>Велосипед</td>
+				<td>Текст 6</td>
+			</tr>
+			<tr>
+				<td>Текст 1</td>
+				<td>Текст 2</td>
+				<td>Текст 3</td>
+				<td>Текст 4</td>
+				<td>Самокат</td>
+				<td>Текст 6</td>
+			</tr>
+			<tr>
+				<td>Текст 1</td>
+				<td>Текст 2</td>
+				<td>Текст 3</td>
+				<td>Текст 4</td>
+				<td>Ролики</td>
+				<td>Текст 6</td>
+			</tr>
+			<tr>
+				<td>Текст 1</td>
+				<td>Текст 2</td>
+				<td>Текст 3</td>
+				<td>Текст 4</td>
+				<td>Мопед</td>
+				<td>Текст 6</td>
+			</tr>
+			<tr>
+				<td>Текст 1</td>
+				<td>Текст 2</td>
+				<td>Текст 3</td>
+				<td>Текст 4</td>
+				<td>Мопед</td>
+				<td>Текст 6</td>
+			</tr>
+			<tr>
+				<td>Текст 1</td>
+				<td>Текст 2</td>
+				<td>Текст 3</td>
+				<td>Текст 4</td>
+				<td>Мопед</td>
+				<td>Текст 6</td>
+			</tr>
+		</tbody>
+	</table>
+	
+	<script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+	<script>
+		let tr = $('table#courses tbody tr');
+		let transport = tr.map(function(i, obj){
+			console.log( $(obj).children().eq(4).text() );
+			return $(obj).children().eq(4).text();
+		});
+		function unique(arr){
+			let tmp = [];
+			for(let i=0; i<arr.length; i++){
+				if( tmp.indexOf(arr[i]) === -1 )
+					tmp.push(arr[i]);				
+			}
+			return tmp;
+		}
+		transport = unique(transport);
+
+		let transportStr = transport.join(', ') + '.';
+		$('div#text').children().last().append(transportStr);
+
+		$('span#transport').text(
+			$.map(transport, function(obj, i){
+				return transport[i];
+			}).join(', ') + '.'
+		);
+
+	</script>
+</body>
+</html>
