@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<style>
+		body{
+			text-align: center;
+		}
+		hr{
+			margin: 40px;
+		}
+		div#box{
+			background: #eee;
+			width:50%;
+			margin:auto;
+			border:3px dotted green;
+			text-align: center;
+		}
+		div#buttons{
+			width: 50%;
+			margin: auto;
+		}
+	</style>	
+</head>
+<body>
+	<h1>Урок 5. Основы анимации на jQuery.</h1>
+	<div id="buttons">	
+		<button id="toggleText">Переключить</button>
+		<button id="toggle">Переключить</button>
+	</div>
+	<div id="box">
+		<h1>Привет всем!</h1>
+	</div>    
+
+	<script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+	<script>
+		$.fx.speeds.veryFast = 100; //можем добавлять свои параметры в библиотеку
+
+		$('#toggleText').on('click', function(){
+			if( $('#box').is(':visible') ){
+				//$('#box').hide();
+				//$('#box').slideUp();  //исчезает плавно вверх (уменьшается height до 0)
+				$('#box').fadeOut(2000);	//исчезает из поля видимости (opacity уменьшается от 1 до 0 и элемент становится прозрачным, после чего display: none;)
+				$(this).text('Показать');
+			}else{				
+				//$('#box').show();
+				//$('#box').slideDown('fast'); //можно передавать ('fast') и ('slow')
+				//$('#box').slideDown(10000); // появляется плавно вниз, можно задавать в милисекундах время действия
+				$('#box').fadeIn(4000);	//появляется (opacity увеличивается от 0 до 1)
+				$(this).text('Скрыть');
+			}
+		});
+		
+
+		$('#toggle').on('click', function(){
+			//$('#box').toggle();  // скрыть\показать елемент с id box
+			$('#box').slideToggle('veryFast');  //объединяет .slideUp() и .slideDown()  можем добавлять свои параметры ('veryFast') выше задали его выше 100 мс
+			//$('#box').fadeToggle();  //объединяет .fadeOut() и .fadeIn()
+		});	
+
+	</script>
+
+	
+
+</body>
+</html>

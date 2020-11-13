@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<style>
+		.container{
+			border: 1px solid green;
+			height: 200px;
+
+		}
+		.container ul li{
+			padding: 10px 0;
+		}
+	</style>	
+</head>
+<body>
+	<h1>Урок 5. Основы анимации на jQuery.</h1>
+	<h2>Лабораторная работа. Пробуем эффекты jQuery</h2>
+
+	<div id="container" class="container">
+		<ul class="myList">
+			<li>Позиция 1</li>
+			<li>Позиция 2</li>
+			<li>Позиция 3</li>
+		</ul>		
+	</div>
+	
+	
+	<script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+
+	<script>
+		let div = $('div#container');
+		div.on('mouseenter', function(){
+			$(this).css('background', '#eeffef')
+				.find('li').eq(2).css('background', 'green');
+			//$('ul.myList').children().last().css('background', 'green');
+		});
+
+		div.on('click', function(){
+			$('ul.myList').fadeOut(1000);
+		});
+
+		div.on('mouseleave', function(){
+			// $('ul.myList').fadeIn(1500);
+			// $('div#container').css('background', '');
+			// $('ul.myList').children().last().css('background', '');
+			$(this).css('background', '')
+				.find('li').eq(2).css('background', '')
+				.parent().fadeIn(1500);
+		});
+
+	</script>
+
+	
+
+</body>
+</html>

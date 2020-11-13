@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<style>
+		#textBlock{
+			background: #eee;
+			width: 50%;
+			padding: 20px;
+			margin-left: 50px;
+			min-height: 200px;
+		}
+	</style>	
+</head>
+<body>
+	<h1>Урок 5. Основы анимации на jQuery. Метод animate</h1>
+	<div id="textBlock">
+		Lorem ipsum dolor sit, amet consectetur, adipisicing elit. Nulla cumque perferendis aspernatur consequuntur consectetur, dolores quos doloremque maxime quia nihil soluta voluptas minima possimus quisquam facilis quibusdam, optio, esse! Quod consequatur perspiciatis neque optio repellendus excepturi quos est eum deserunt, odit, sed iste consectetur maxime architecto. In obcaecati voluptate, architecto.
+	</div>
+	<br>
+	<button id="playLeft">Запустить анимацию</button>
+	<button id="playRight">Запустить анимацию</button>	
+	
+	<script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+
+	<script>
+		$('#playRight').on('click', function(){
+			$('#textBlock').animate({	//подобно .css() в jQ animate() принимает объект с параметрами CSS
+				'margin-left': '+=10',
+				'font-size': '+=1'
+			}, 1000, 'linear', function(){   //также анимацию можно растянуть во времени, задать тип, вызвать функцию
+								console.log('stop');  //по окончанию анимации исполнится функция
+			});
+		});
+
+		$('#playLeft').on('click', function(){
+			$('#textBlock').animate(  //может принимать 2 объекта
+				{
+					'margin-left': '-=10',
+					'font-size': '-=1'
+				},
+				{	duration:1000,  // duration (длительность)
+					complete: function(){console.log('stop');},
+					step: function(){console.log(  'Текущий размер шрифта: ', $(this).css('font-size')  )} //эта функия срабатывает при каждом шаге
+				}
+				) //тут закончился animate
+			.animate(
+				{  //можно начать новый animate за ним, исполнятся будет после верхнего animate
+				'font-size': '+=2'
+				},
+				{
+				duration: 1500, 
+				queue: false // queue(очередь) по умолчанию true, что значит выполнять animate друг за другом в порядке очереди; false - одновременно.
+				}
+				);
+		});
+
+	</script>
+
+	
+
+</body>
+</html>
