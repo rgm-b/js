@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<style>
+		.container{
+			width: 400px;
+			background: #eee;
+			position: relative;
+			overflow: hidden;
+			padding: 1em;
+		}
+		.myClass{
+			color:green;
+		}
+	</style>
+</head>
+<body>
+	<h1>Создание своей анимации</h1>
+
+	<div class="container">
+		<h2>Какой-то текст</h2>
+		<p>
+			Lorem ipsum, dolor sit amet consectetur adipisicing, elit. Tempore repellendus ad facilis? Facere minus est dicta eos molestiae, laudantium praesentium pariatur, dignissimos fugit architecto eveniet quae, atque cum numquam quibusdam ex distinctio non voluptatem doloremque magnam! Inventore quasi culpa, suscipit mollitia, porro, voluptatem, et ad unde est voluptas dolore velit.
+		</p>		
+	</div>
+
+	<br><button>Нажми</button>	
+
+	<script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+	<script>
+		$.fn.inOut = function(speed, fn){
+
+			return $(this).animate( //функция будет возвращать jQ объект к которому примяняется, чтобы не прерывать цепочку
+				{
+				  'height': 'toggle',
+				  'opacity': 'toggle'
+				},
+				speed || 2000,  //создаём своё значение по умолчанию, на случай не присвоения speed пользователем
+				//fn  //передаём ссылку на функцию, чтобы она исполнилась в конце, после speed, если передать fn(), то исполнится в начале, при нажатии на button
+				function(){
+					//чтобы убрать undefined в случае отсутствия передачей пользователем вторым параметром функции при вызове функии при клике
+					$.isFunction(fn) && fn.call(this);  //проверка fn на function(возвращает булеа тип) && вызови fn как метод объекта this (в нашем примере ниже это div.container)
+				}
+				);			
+		};
+
+		$('button').on('click', function(){
+			$('div.container').inOut(400, function(){
+				console.log('here');
+			})
+			.addClass('myClass');
+		});
+	</script>
+</body>
+</html>
