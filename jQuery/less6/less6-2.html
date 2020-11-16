@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<style>
+	</style>
+</head>
+<body>
+	<h1>Метод $.gper</h1>
+
+	<script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+	<script>
+		let arr = [1,2,3,4,5,6,7,8,9,10];
+		let result = $.grep(arr, function(val, key){
+			console.log('Позиция ' + key);
+			console.log('Значение ' + val);
+			return val > 5;
+		}, false);  //при false или ничём вернёт массив [6, 7, 8, 9, 10], при true [1, 2, 3, 4, 5]
+		console.log(result);
+
+		let users = [
+		{first:'John', last:'Smith'},
+		{first:'Mike', last:'Doe'}
+		];
+		let user = $.grep(users, function(val, key){
+			return val.last === 'Smith';
+		});
+		console.log(user);
+	</script>
+</body>
+</html>
