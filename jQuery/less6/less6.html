@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<style>
+		body{
+			position: relative;
+		}
+		#content{
+			background: #eee;
+			width: 50%;				
+			position: relative;
+			padding: 40px;
+			height: 168px;
+			left:50px;
+			display: none;
+		}
+	</style>	
+</head>
+<body>
+	<h1>Урок 6. Основы анимации на jQuery. Часть 2.</h1>
+	<button>Нажать</button>
+	<div id="content">
+		Lorem ipsum dolor sit, amet consectetur, adipisicing elit. Nulla cumque perferendis aspernatur consequuntur consectetur, dolores quos doloremque maxime quia nihil soluta voluptas minima possimus quisquam facilis quibusdam, optio, esse! Quod consequatur perspiciatis neque optio repellendus excepturi quos est eum deserunt, odit, sed iste consectetur maxime architecto. In obcaecati voluptate, architecto.
+	</div>
+	<br>
+	
+	
+	
+	<script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+
+	<script>
+		let content = $('div#content');
+		let winW = $(window).width() / 2 - content.outerWidth()/2;  //outerWidth полная ширина (с падингами)
+		let winH = $(window).height() / 2 - content.outerHeight()/2 - $('h1').outerHeight()*2;  //без outer падинги бы не учитывались, поэтому было бы не ровно
+		//content.height() === 168;  //задал в стилях
+		//content.outerHeight() === 248; // + 2 падинга по 40px
+
+
+		$('button').on('click', function(){
+			content
+			.animate({ 'left': winW, 'position': 'absolute'}, 1000)
+			.animate({ 'top': winH, opacity: "toggle" }, {duration: 2000, queue: false})
+			/*height: 'toggle'*/
+		});
+	</script>
+
+	
+
+</body>
+</html>
