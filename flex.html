@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<style>
+		/**{
+			margin: 0;
+			padding: 0;
+		}*/
+		.container ul{
+			padding: 0;
+			display: flex;
+			flex-direction: row;
+			/*justify-content: space-around;*/
+			/*justify-content: flex-end;*/
+			/*justify-content: flex-end;*/
+			/*align-items: flex-end;*/
+
+			list-style: none;
+		}
+		.container ul li{
+			background-color: #b7e0b7;
+			margin-right: 5px;
+			margin-bottom: 5px;
+			padding: 5px;
+		}
+		.container ul li:nth-child(odd){
+			padding: 10px 5px;
+		}
+
+		@media (max-width: 720px){
+			.container ul{
+				flex-direction: column;
+			}
+		}
+	</style>
+</head>
+<body>
+	<button id="buttonJS">Нажми (js)</button>
+	<button id="buttonJQ">Нажми (jq)</button>
+	<button id="reset">reset (flex-direction: row)</button>
+	<div class="container">
+		<ul>
+			<li>Пункт 1</li>
+			<li>Пункт 2</li>
+			<li>Пункт 3</li>
+			<li>Пункт 4</li>
+			<li>Пункт 5</li>
+			<li>Пункт 6</li>
+			<li>Пункт 7</li>
+			<li>Пункт 8</li>
+			<li>Пункт 9</li>
+			<li>Пункт 10</li>
+		</ul>	
+	</div>
+	
+	<script>
+		document.querySelector('#buttonJS').onclick = function(){
+			document.querySelector('.container ul').style.flexDirection = 'column';
+
+			//document.querySelectorAll('.container ul li').forEach( (element) => element.style.backgroundColor = 'lightblue');	
+			document.querySelectorAll('.container ul li').forEach( 
+			  function ( element ) {
+			    element.style.backgroundColor = 'lightblue';
+			    //console.log( element.textContent);
+			  }			 
+			);
+			
+		
+			document.querySelector('.container ul li').textContent = 'Java Script';
+		
+			 
+		}
+	</script>
+
+	<script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+
+	<script>
+		$('#buttonJQ').on('click', function(){
+			$('.container ul').css('flex-direction','column');
+			$('.container ul li').css('background-color', '#eee');
+			$('.container ul li:first').text('jQuery');
+		});
+		$('#reset').on('click', function(){
+			$('.container ul').css('flex-direction','');
+			$('.container ul li').css('background-color', '');
+			$('.container ul li:first').text('Пункт 1');
+		});
+	</script>
+
+</body>
+</html>
