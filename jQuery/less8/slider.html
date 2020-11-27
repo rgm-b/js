@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.slider{
+			width: 400px;
+			margin: 10px auto;
+		}
+		.slider .view{
+			height: 500px;	
+			overflow: scroll;		
+		}
+		.slider .view ul{ 
+			list-style: none;
+			width: 4000px;			
+		}
+		.slider .view ul li{
+			float: left;
+		}
+		.slider #switches{
+			display: none;	
+			margin-top: 1em;		
+		}
+		.slider #switches button{			
+			padding: 1em;
+			margin-right: 1em;
+			cursor: pointer;
+		}
+	</style>
+	<script> // это нужно вынести в отдельный файл
+		let myImgAlt = 'Картинка номер ';
+		let aImgs = [  //создаём массив объектов в котором будет собрание картинок
+			{alt: myImgAlt + "1", src:"img/1.jpg"},  //каждый объект отвечает за картинку
+			{alt: myImgAlt + "2", src:"img/2.jpg"},
+			{alt: myImgAlt + "3", src:"img/3.jpg"},
+			{alt: myImgAlt + "4", src:"img/4.jpg"},
+			{alt: myImgAlt + "5", src:"img/5.jpg"},
+		];
+	</script>
+
+	<!-- jquery/template условное название, которое проигнорирует браузер, но которое будет понятно программисту -->
+	<script id="myTpl" type="jquery/template">  
+		<li><img src="{{src}}" alt="{{alt}}"></li>		
+	</script>
+</head>
+<body>
+	<div class="slider">
+		<div class="view">
+			<ul>
+				<!-- <li><img src="img/1.jpg" alt=""></li>
+				<li><img src="img/2.jpg" alt=""></li>
+				<li><img src="img/3.jpg" alt=""></li>
+				<li><img src="img/4.jpg" alt=""></li>
+				<li><img src="img/5.jpg" alt=""></li> -->
+			</ul>
+		</div>
+
+		<div id="switches">
+			<button id="prev" data-param='prev'>Назад</button>
+			<button id="next" data-param='next'>Вперёд</button>
+		</div>		
+	</div>
+
+	<script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+
+	<script>
+		let tpl = $('#myTpl').html(),
+			text = '';
+		//console.log(tpl);
+		$.each(aImgs, function(key, val){
+			text += tpl
+						.replace(/{{src}}/ig, val.src)
+						.replace(/{{alt}}/ig, val.alt)
+			//console.log(text);			
+		});
+		$('div.view ul').append(text);
+	</script>
+
+	<script src="slider.js"></script>
+</body>
+</html>

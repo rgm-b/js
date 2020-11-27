@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.6/handlebars.js"></script>
+</head>
+<body>	
+	<div id="header">
+		<script id="myTemplate" type="text/x-handlebars-template">
+			<h1>
+				{{title}}
+			</h1>
+		    <div>	    	
+		        {{text}}
+		    </div>	 
+		</script>
+	</div>	
+
+	<h3>Список пользователей</h3>
+	<span>(вставим массив объектов)</span>
+	<ul class="list">		
+		<script id="myTpl" type="text/x-handlebars-template">
+			{{#each this}}
+			<div>
+				{{name}} {{email}}
+			</div>
+			{{/each}}		
+		</script>
+	</ul>
+
+	<script>
+		let user = {
+			title: 'Шаблонизатор handlebarsjs.com',
+			text: 'Используется для вставки данных из объектов в HTML код'
+		};
+		let tpl = Handlebars
+					.compile(
+						document.getElementById('myTemplate').innerHTML
+					);
+		//console.log(tpl); //функция
+		//console.log(tpl(user));  //готовый html код
+
+		document.getElementById('header').innerHTML = tpl(user);
+
+		let users = [
+			{name: "John", email: 'john@com.ru'},
+			{name: "Mike", email: 'mike@com.ru'},
+			{name: "Vitya", email: 'vitya@com.ru'}
+		]
+		let myTpl = Handlebars
+						.compile(
+							document.getElementById('myTpl').innerHTML
+						);
+		document.querySelector('.list').innerHTML = myTpl(users);
+
+	</script>
+
+</body>
+</html>
